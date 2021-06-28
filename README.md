@@ -19,6 +19,8 @@ npm start
 ```
  cd api
  
+ ON CMD: set FLASK_APP=app
+ 
  pipenv shell
  
  flask run
