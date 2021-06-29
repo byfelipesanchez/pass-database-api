@@ -1,22 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import axios from 'axios'
+// Access-Control-Allow-Origin: http://127.0.0.1:5000/product/1
+// https://official-joke-api.appspot.com/random_joke
+//https://www.youtube.com/watch?v=rpg1jOvGCtQ&list=TLPQMjkwNjIwMjHEAwLpFdeKig&index=5
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Felipe's Password Database API
-        </p>
-        <p>
-          Database made with SQLite and Flask; Front end made with React.js
-        </p>
-        <p>
-          @byfelipesanchez
-        </p>
-      </header>
-    </div>
+
+  const fetchData = () => {
+    axios.get('http://127.0.0.1:5000/product').then(
+      (response) => {
+      console.log(response);
+    });
+  };
+
+
+  return ( 
+  
+  <div>Hello World</div>,
+
+  <button onClick={fetchData} >Test</button>
+  
   );
 }
 
