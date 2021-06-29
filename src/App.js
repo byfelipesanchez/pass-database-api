@@ -9,18 +9,27 @@ import axios from 'axios'
 function App() {
 
   const fetchData = () => {
-    axios.get('http://127.0.0.1:5000/product').then(
+    axios.get('http://127.0.0.1:5000/product/1 ').then(
       (response) => {
       console.log(response);
     });
+    
   };
 
+  const style = {
+    color: "black",
+    backgroundColor: "DodgerBlue",
+    fontFamily: "Lobster",
+    fontSize:"40px",
+    padding: "30px",
+    fontWeight: "Bold"
+  }
 
   return ( 
   
-  <div>Hello World</div>,
+  <div class='body' >Hello World</div>,
 
-  <button onClick={fetchData} >Test</button>
+  <button style={style} onClick={fetchData} >Test</button>
   
   );
 }

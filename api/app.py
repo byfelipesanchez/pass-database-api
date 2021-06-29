@@ -1,10 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, json, request, jsonify
+from werkzeug.wrappers import response
 from flask_sqlalchemy import SQLAlchemy 
 from flask_marshmallow import Marshmallow 
 import os
+from flask_cors import CORS, cross_origin
 
 # Init app
 app = Flask(__name__)
+CORS(app)
+# app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
+# app.config['CORS_HEADERS'] = 'Content-Type'
+# logging.getLogger('flask_cors').level = logging.DEBUG
 basedir = os.path.abspath(os.path.dirname(__file__))
 # Database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
@@ -37,12 +43,16 @@ class ProductSchema(ma.Schema):
 product_schema = ProductSchema()
 products_schema = ProductSchema(many=True)
 
-@app.route('/')
-def aa():
-    return("test")
+# @app.route('/test')
+# def aa():
+#     response = jsonify(message="testing")
+#     return response
+
+    
 
 # Create a Product
 @app.route('/product', methods=['POST'])
+# @cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
 def add_product():
   name = request.json['name']
   description = request.json['description']
@@ -51,17 +61,26 @@ def add_product():
 
   new_product = Product(name, description, price, qty)
 
+
+  
+
   db.session.add(new_product)
   db.session.commit()
 
   return product_schema.jsonify(new_product)
 
+
+
 # Get All Products
 @app.route('/product', methods=['GET'])
+# @cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
 def get_products():
   all_products = Product.query.all()
   result = products_schema.dump(all_products)
+  # response = jsonify(message="test")
   return jsonify(result)
+
+  # response.headers.add("Access-Control-Allow-Origin", "*")
 
 # Get Single Products
 @app.route('/product/<id>', methods=['GET'])
@@ -99,4 +118,4 @@ def delete_product(id):
 
 # Run Server
 if __name__ == '__main__':
-  app.run(debug=True)
+    app.run(debug=True)
