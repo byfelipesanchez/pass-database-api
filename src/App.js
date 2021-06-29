@@ -9,7 +9,7 @@ import axios from 'axios'
 function App() {
 
   const fetchData = () => {
-    axios.get('http://127.0.0.1:5000/product/1 ').then(
+    axios.get('http://127.0.0.1:5000/product ').then(
       (response) => {
       console.log(response);
     });

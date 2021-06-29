@@ -6,8 +6,11 @@ import os
 from flask_cors import CORS, cross_origin
 
 # Init app
-app = Flask(__name__)
-CORS(app)
+
+def init_app():
+  app = Flask(__name__)
+  CORS(app)
+
 # app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
 # app.config['CORS_HEADERS'] = 'Content-Type'
 # logging.getLogger('flask_cors').level = logging.DEBUG
