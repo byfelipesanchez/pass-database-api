@@ -21,6 +21,10 @@ function App() {
   };
 
 
+  //axis post method
+
+//axios post function 
+
 
 
   // const axios = require('axios')
