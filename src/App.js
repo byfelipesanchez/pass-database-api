@@ -11,15 +11,21 @@ function App() {
   const [data, setData] = useState([])
   const [q, setQ] = useState("")
 
-  const fetchData = () => {
-    axios.get('http://127.0.0.1:5000/product/1 ').then(
-      (response) => {
-      console.log(response);
-      setData(response.data.name + response.data.description + response.data.qty);
-    });
+  // const fetchData = () => {
+  //   axios.get('http://127.0.0.1:5000/product/1 ').then(
+  //     (response) => {
+  //     console.log(response);
+  //     setData(response.data.name + response.data.description + response.data.qty);
+  //   });
     
-  };
+  // };
 
+
+  const fetchingData = () => {
+    fetch('http://127.0.0.1:5000/product/1 ').then(
+      response => response.json()).then(
+      data => console.log(data));
+  };
 
   //axis post method
 
@@ -47,14 +53,14 @@ function App() {
     fontWeight: "Bold"
   }
 
-//search bar, when searched, go to item route 
+// search bar, when searched, go to item route 
 
   return ( 
   
   <div class='body'>
   <button style={style} onClick={axios} >Test</button>
-  <a href={'http://127.0.0.1:5000/product/1' }>click</a>
-  <button style={style} onClick={fetchData}>log</button>
+  
+  <button style={style} onClick={fetchingData}>log</button>
   <input type='text' placeholder='search'></input>
   {data}
   
