@@ -7,20 +7,24 @@ from flask_cors import CORS, cross_origin
 
 # Init app
 
-def init_app():
-  app = Flask(__name__)
-  CORS(app)
+engine = create_engine("mysql+pymysql://user:pw@host/db", pool_pre_ping=True)
+
+
+app = Flask(__name__)
+CORS(app)
+
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
+basedir = os.path.abspath(os.path.dirname(__file__))
+  
 
 # app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
 # app.config['CORS_HEADERS'] = 'Content-Type'
 # logging.getLogger('flask_cors').level = logging.DEBUG
-basedir = os.path.abspath(os.path.dirname(__file__))
 # Database
 
 # Init db
-db = SQLAlchemy(app)
-# Init ma
-ma = Marshmallow(app)
+
 
 # Product Class/Model
 class Product(db.Model):

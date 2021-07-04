@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect} from 'react';
 import axios from 'axios'
+import FetchingAPI from './Components/FetchingAPI'
 
 // https://official-joke-api.appspot.com/random_joke -> test api
 //https://www.youtube.com/watch?v=rpg1jOvGCtQ&list=TLPQMjkwNjIwMjHEAwLpFdeKig&index=5
@@ -21,11 +22,11 @@ function App() {
   // };
 
 
-  const fetchingData = () => {
+/*  const fetchingData = () => {
     fetch('http://127.0.0.1:5000/product/1 ').then(
       response => response.json()).then(
       data => console.log(data));
-  };
+  };*/
 
   //axis post method
 
@@ -59,8 +60,7 @@ function App() {
   
   <div class='body'>
   <button style={style} onClick={axios} >Test</button>
-  
-  <button style={style} onClick={fetchingData}>log</button>
+  <FetchingAPI/>
   <input type='text' placeholder='search'></input>
   {data}
   
