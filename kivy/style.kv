@@ -1,0 +1,25 @@
+KV = """
+ScreenManager:
+	MainScreen:
+	SecondScreen:
+
+<MainScreen>:
+	name: "main"
+
+	MDLabel:
+		text: "testing"
+		halign: 'center'
+
+	MDRectangleFlatButton:
+		text: "click here"
+		pos_hint: {'center_x': .2, 'center_y': .5}
+		on_press: root.manager.current = 'second_screen'
+
+<SecondScreen>:
+	name: "second_screen"
+
+	MDLabel:
+		text: "second screen"
+		halign: 'center'
+
+"""
