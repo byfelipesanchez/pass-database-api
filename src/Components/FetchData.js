@@ -16,7 +16,7 @@ function FetchingAPI() {
 		<div>
 		API <br/>
 		<button onClick={getAPI}>Fetch</button>
-		>br/>
+		<br/>
 		{JSON.stringify(data, null, 2)}
 		</div>
 		);
@@ -51,4 +51,4 @@ export default FetchingAPI;
 //             {this.state.persons.map(person => <li>{person.name}</li>)}
 //         </ul>;
 //     }
-// }
+// */
